@@ -1,0 +1,50 @@
+NCP-AAI Exam Blueprint — NVIDIA Certified Professional: Agentic AI
+
+EXAM OVERVIEW
+Duration: 120 minutes
+Questions: 60–70 questions
+Price: $200 USD
+Level: Professional
+Validity: 2 years from issuance
+
+DOMAIN WEIGHTS
+
+Agent Architecture and Design — 15%
+Focus: Foundational structuring and design of agentic AI systems. How agents interact, reason, and communicate.
+Key topics: Agent vs fixed workflow decision criteria. Single-agent and multi-agent topologies. Message schemas and tool boundaries. Trust boundaries — what the model may decide versus what code must enforce. Plan-Act-Observe loop (ReAct-style reasoning). Coordinator, specialist, and handoff patterns. Multi-agent failure modes: oscillation, duplicated work, inconsistent state. Stopping conditions and budgets (tokens, steps, time).
+
+Agent Development — 15%
+Focus: Practical construction, integration, and enhancement of agents.
+Key topics: Tool contract design (JSON schema, errors, idempotency). Tool-calling flows with structured outputs and validation. Prompting for tools — clear descriptions, few-shot vs spec. Schema enforcement and repair loops. Orchestration patterns: sequential, parallel fan-out, supervisor routing. Reliability: retries with backoff, timeouts, circuit breakers. Guardrails-lite: length limits, regex and keyword checks, argument allowlists. Structured step traces for each plan-act-observe cycle. Tool failure matrix: timeout, bad arguments, empty return, invented tool name. Multimodal tool flows.
+
+Evaluation and Tuning — 13%
+Focus: Measuring, comparing, and optimizing agent performance.
+Key topics: Golden sets and task stratification. Avoiding train-eval leakage from prompt content. Task success vs component-level metrics. LLM-as-judge — appropriate use and bias risks. Change-one-variable discipline for safe tuning. Prompt versioning. A/B testing at a high level. JSONL eval case format. Before-and-after results tables.
+
+Deployment and Scaling — 13%
+Focus: Operationalizing and scaling agentic systems.
+Key topics: Twelve-factor style configuration and secrets management. Dependency pinning. Dockerizing an agent as an HTTP API (health endpoint, task endpoint). API design for streaming vs batch, backpressure. Stateless inference workers. Queue-and-worker pattern for long-running jobs. Rate limiting. GPU vs CPU inference economics. Horizontal scaling: stateless workers vs sticky sessions. Deployment diagrams with inference tier labeled.
+
+Cognition, Planning, and Memory — 10%
+Focus: Core cognitive processes underlying intelligent agent behavior, including reasoning strategies, decision-making, and memory management.
+Key topics: Short-term memory (session scratchpad in RAM). Long-term memory (persistent JSON or vector store). Episodic memory — timestamped session records. Semantic memory — facts retrieved from a knowledge base. Procedural memory — tool schemas embedded in the system prompt. Vector memory and embedding-based retrieval. Memory consistency — contradiction between memory and corpus. Summarization memory — compressing history to free token budget. User profiles as long-term fact stores.
+
+Knowledge Integration and Data Handling — 10%
+Focus: External knowledge integration and diverse data type management.
+Key topics: Grounding versus hallucination — when to retrieve versus when to refuse to answer. RAG pipeline end-to-end: chunk, embed, retrieve, optionally rerank, generate. Chunk size and overlap tradeoffs. Metadata tagging for documents. Dirty document pitfalls (OCR noise, inconsistent formatting). Top-k retrieval and MMR-style diversity. Rerankers and query rewriting. PII redaction before indexing. Data retention and audit trails. Right to be forgotten at the architecture level. Data card — source, license, PII risk, refresh cadence.
+
+NVIDIA Platform Implementation — 7%
+Focus: Leveraging NVIDIA AI hardware and software platforms for agentic AI systems.
+Key topics: Triton Inference Server — multi-model serving, dynamic batching (conceptual role). TensorRT-LLM — optimized LLM inference, its role in the stack. NIM (NVIDIA Inference Microservices) — managed microservice mental model for deploying models. NeMo ecosystem and NeMo Guardrails — where guardrails and agent toolkits fit. Choosing the right NVIDIA component for a given constraint. Cost, latency, and operational complexity tradeoffs across components.
+
+Run, Monitor, and Maintain — 5%
+Focus: Post-deployment operation and system maintenance.
+Key topics: Structured logging across a multi-step agent run. Correlation and trace IDs for end-to-end traceability. Redaction policy in logs. Good alerts for agent systems. Data drift vs behavior drift. Replay tests for drift detection. On-call incident response basics and postmortem artifacts.
+
+Safety, Ethics, and Compliance — 5%
+Focus: Responsible AI, ethical standards, and legal and regulatory adherence.
+Key topics: Allow and deny rules and escalation paths in code. Abuse detection and audit logging. Data minimization and retention policies. Jurisdiction basics and compliance framing. Policy as code intuition. Red teaming — jailbreak resistance and tool argument injection abuse. Responsible use documentation: intended use, out-of-scope uses, monitoring plan.
+
+Human-AI Interaction and Oversight — 5%
+Focus: Designing effective human oversight mechanisms.
+Key topics: HITL design — when to interrupt an automated flow for human review. Operator burden and reviewer experience design. Explanations for human reviewers. Handoff between automated agent and human workflows. Monitoring plan for ongoing human oversight.

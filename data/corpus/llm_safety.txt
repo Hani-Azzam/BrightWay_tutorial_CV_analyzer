@@ -1,0 +1,65 @@
+LLM Safety, Data Governance, and Responsible AI
+
+PII AND DATA REDACTION
+Personally Identifiable Information (PII) is any data that can be used to identify a specific individual. In LLM agent systems, PII can appear in user inputs, retrieved documents, and generated outputs. Common PII categories: full names, email addresses, phone numbers, physical addresses, social security numbers, passport numbers, financial account numbers, biometric identifiers, medical record numbers, and IP addresses.
+
+Before indexing a document or storing a user message in a vector database or audit log, PII should be detected and redacted or pseudonymized. Detection approaches range from simple regex patterns (for structured PII like emails and phone numbers) to ML-based named-entity recognition models (for unstructured PII like names and addresses). Libraries commonly used: spaCy, Microsoft Presidio, Amazon Comprehend.
+
+Regex redaction is a pragmatic starting point for structured PII. It is not sufficient for unstructured PII and must be combined with NER for production systems. All redaction should be logged so the operation can be audited.
+
+DATA RETENTION AND AUDIT TRAILS
+A data retention policy specifies how long different types of data are kept and when they must be deleted. In an LLM agent system, this applies to conversation logs, retrieved document chunks, generated outputs, and usage metadata.
+
+Audit trail requirements: every action taken by the agent that could affect a user or a business process should be logged with a timestamp, the input received, the output produced, and the sources consulted. The log must be tamper-evident (append-only) and accessible for compliance review.
+
+Minimum audit log fields:
+- session_id: unique identifier for the conversation session
+- timestamp: ISO 8601 datetime of the event
+- user_input: the message received (after PII redaction)
+- agent_response: the message produced
+- sources: list of document source filenames or URLs consulted
+- model_name: which LLM was used
+- token_usage: input and output token counts
+
+RIGHT TO BE FORGOTTEN
+Data protection regulations (GDPR, CCPA) grant individuals the right to request deletion of their personal data. In an LLM agent system, this means:
+1. Conversation logs must be deletable by user ID or session ID.
+2. Embeddings of a user's messages stored in a vector database must be deletable.
+3. If a user's data was used to fine-tune a model, the model may need to be retrained without that data.
+4. Document chunks derived from a user's uploaded files must be removable from the vector index.
+
+Architectural mechanism: vector stores with collection-level delete operations (e.g. Chroma's delete_collection()) enable bulk deletion. Row-level deletion requires storing a mapping from user ID to document IDs.
+
+DATA CARDS
+A data card (also called a dataset card or model card for data) documents the characteristics of a dataset used in an AI system. For a RAG corpus, each document source should have a card with:
+- source: the filename or URL of the document
+- license: the license under which the content was obtained (e.g. public domain, CC BY, proprietary)
+- pii_risk: assessed risk level that the document contains PII (none, low, high)
+- refresh_cadence: how often the document should be re-indexed to stay current (e.g. daily, on release, n/a)
+- language: the language of the document
+- description: what the document covers
+
+Data cards enable responsible governance of the RAG corpus and help teams identify which documents require re-scraping, anonymization, or removal.
+
+TRUST BOUNDARY ENFORCEMENT
+A trust boundary is the line between components that are considered trusted (application code) and components that are untrusted (LLM output, user input, external APIs). Trust boundary enforcement means:
+- Never executing raw LLM output directly (e.g. no eval() on model-generated strings)
+- Validating all tool arguments against an allowlist before execution
+- Sanitizing user-supplied search queries before passing them to the retriever
+- Redacting secrets and credentials from logs and LLM prompts
+- Restricting file access to a sandboxed directory (e.g. using pathlib.Path.name to strip traversal)
+
+ALLOW AND DENY RULES
+An allow/deny policy defines which operations the agent is permitted to perform and which are always blocked, regardless of user request. Examples:
+- Allow: read from a specific directory, query a specific API, perform arithmetic
+- Deny: write to the file system, send email, access the network without approval
+
+Policy as code means these rules are enforced programmatically in the agent's tool dispatch layer, not just documented in a policy document.
+
+RESPONSIBLE USE DOCUMENTATION
+Before deploying an agentic AI system, a responsible use document should be prepared. It should cover:
+- Intended use: the specific tasks the system is designed to perform
+- Out-of-scope use: tasks the system should not be used for
+- Known limitations: failure modes, accuracy limitations, biases
+- Monitoring plan: what metrics are tracked, what thresholds trigger review
+- Escalation path: who to contact when the system behaves unexpectedly

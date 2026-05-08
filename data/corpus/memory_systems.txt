@@ -1,0 +1,54 @@
+Memory Systems in LLM Agents
+
+OVERVIEW
+An LLM is stateless by design: each API call receives only the messages sent in that request and produces a response without any persistent internal state. All memory in an LLM agent system is managed externally by the application code and injected into the prompt at the time of each call.
+
+MEMORY TAXONOMY
+
+Short-term memory (session scratchpad)
+Storage: Python list of message objects in RAM.
+Scope: single session (lost when the process exits).
+Access pattern: all messages are always included in the next call.
+Implementation: MessagesPlaceholder in a ChatPromptTemplate with a history list.
+Limitation: the list grows by two messages per turn (one HumanMessage, one AIMessage). As the session grows, token usage increases until the model's context window is exhausted. Summarization memory can mitigate this.
+
+Long-term memory (persistent store)
+Storage: external system (JSON file, relational database, vector store).
+Scope: survives process restarts, accessible across sessions.
+Access pattern: loaded at startup, optionally filtered or truncated before injection.
+Implementation: json.load() on startup, session records appended and json.dump() on exit.
+Limitation: injecting all past sessions verbatim is impractical when there are many sessions. A retrieval step (semantic search or summarization) must select which past content to inject.
+
+Episodic memory
+A subtype of long-term memory that records specific past interactions — what the user asked, when, and what the agent answered. Stored as timestamped session records. Analogous to human autobiographical memory.
+
+Semantic memory
+A subtype of long-term memory that stores general facts and knowledge, not tied to specific interactions. In LLM agents, this is typically a knowledge base (text files, a vector store, a database) that the agent can query. The knowledge base is not the conversation history.
+
+Procedural memory
+Stores how to perform tasks — in an LLM agent context, this is the set of available tools and their schemas embedded in the system prompt. The agent reads the tool descriptions and learns how to invoke them.
+
+Working memory buffer
+A short, fixed-size buffer of the most recent turns, as opposed to the full session history. Used to bound token usage while retaining recent context.
+
+VECTOR MEMORY
+Semantic memory and episodic memory can both be stored as embedding vectors and retrieved by similarity search, not recency or full-text keyword match.
+
+In vector memory:
+1. Each conversation turn (or each document chunk) is passed through an embedding model to produce a vector.
+2. The vector is stored alongside the original text.
+3. At retrieval time, the query is also embedded, and the stored vectors are ranked by cosine similarity to the query vector.
+4. The top-k most semantically similar turns (or chunks) are injected into the next prompt.
+
+Advantage over flat-list memory: a flat list always injects the most recent N turns. Vector memory injects the most relevant N turns, even if they occurred many turns ago. This is especially valuable for long sessions where early context is needed again.
+
+MEMORY CONSISTENCY
+When an agent has both a vector memory of past sessions and a RAG corpus of authoritative documents, contradictions can arise. The memory may reflect an outdated answer from an earlier session while the current document version is different. Contradiction detection involves comparing the memory-retrieved context with the RAG-retrieved context and, when a conflict is found, preferring the authoritative document source and surfacing the discrepancy to the user.
+
+SUMMARIZATION MEMORY
+When short-term memory grows large enough to approach the token limit, the LLM can be asked to summarize the conversation so far into a short paragraph. The original history is discarded and replaced with the summary as a single synthetic message pair. This frees most of the used tokens while preserving the key facts and topics of the conversation. The summarization call itself costs tokens and must be counted against the budget.
+
+TOKEN BUDGET MANAGEMENT
+Token budget tracking: count input_tokens and output_tokens from each API response. Maintain a cumulative total and a remaining budget.
+Summary threshold: when remaining tokens fall below this value, trigger summarization.
+Hard limit: when remaining tokens fall below the minimum needed for a response, do not call the LLM. Print a graceful shutdown message instead.

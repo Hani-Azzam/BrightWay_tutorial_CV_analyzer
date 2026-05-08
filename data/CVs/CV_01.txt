@@ -1,0 +1,50 @@
+John Dow
+
+
+**CONTACT**
+Tel: 050-1784451
+Email: John.Doe@brightway.com
+Location: Tel Aviv, Israel
+
+
+**ABOUT**
+Results-driven Software Engineer with 4+ years of experience in designing, developing,
+and scaling web applications. Expert in Python and JavaScript ecosystems with a focus
+on writing clean, maintainable code and optimizing database performance. Passionate
+about solving complex architectural challenges and improving developer workflows.
+
+**EDUCATION**
+B.Sc. in Computer Science
+Technion – Israel Institute of Technology | 2016 – 2020
+
+
+**JOB EXPERIENCE**
+Full Stack Developer | CloudScale Solutions
+2022 – Present
+- Architected and maintained RESTful APIs using Python (Django) and PostgreSQL, serving 50k+ active users.
+- Reduced API latency by 30% through strategic implementation of Redis caching and query optimization.
+- Led the migration of a legacy frontend monolith to a modern React micro-frontend architecture.
+- Collaborated with DevOps to implement CI/CD pipelines using GitLab CI, reducing deployment time by 15 minutes.
+
+Junior Software Developer | DataStream Inc.
+2020 – 2022
+- Developed automated data processing scripts in Python, handling over 1TB of raw data weekly.
+- Fixed critical bugs in the core banking module, improving system stability by 20%.
+- Participated in daily Sprints and Agile ceremonies within a team of 8 developers.
+
+
+**SKILLS**
+Languages: Python (Expert), JavaScript (ES6+), SQL, Java.
+Frameworks: Django, FastAPI, React, Node.js.
+Tools/DevOps: Docker, AWS (S3, EC2), Git, Jenkins, Redis.
+Core Competencies: System Design, OOP (Method Overriding/Inheritance), RESTful APIs, Unit Testing.
+
+
+
+**PROJECTS**
+TaskMaster Pro (Open Source)
+- Developed a collaborative task management tool using FastAPI and WebSockets for real-time updates.
+- Implemented custom list-processing logic using list.extend() and advanced iterators to handle batch imports of user data.
+
+Personal Portfolio Website
+- Built a responsive portfolio using Next.js and Tailwind CSS, hosted on Vercel with 99.9% uptime.
