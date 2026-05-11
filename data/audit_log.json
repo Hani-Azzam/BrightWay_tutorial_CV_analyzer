@@ -1,0 +1,41 @@
+[
+  {
+    "timestamp": "2026-05-11T21:44:25.462761",
+    "user": "skills",
+    "response": "**TECHNICAL SKILLS**\n*   **Languages:** Python, SQL, Bash, Go (basic)\n*   **Frameworks:** FastAPI, LangChain, LangGraph, Flask, Celery\n*   **Cloud:** AWS (EC2, S3, Lambda, SageMaker), Docker, Kubernetes\n*   **Tools:** Git, GitHub Actions, Terraform, Datadog, Weights & Biases\n*   **Databases:** PostgreSQL, Redis, Pinecone, Weaviate, MongoDB\n*   **ML / AI:** LLM integration, RAG pipelines, embedding models, fine-tuning (LoRA), prompt engineering\n\n**SOFT SKILLS**\n*   Mentoring junior engineers through code review and pair programming\n*   Comfortable driving projects from ambiguous requirements to delivery\n*   Collaborative and proactive in cross-functional teams\n\ncv_alice.txt",
+    "sources": [
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt"
+    ]
+  },
+  {
+    "timestamp": "2026-05-11T21:45:37.659150",
+    "user": "improve summary section",
+    "response": "Reduced average query latency by 38% using MMR retrieval and Redis caching. Led migration to async FastAPI microservices, cutting infrastructure costs by 22%. Established PII redaction middleware, satisfying GDPR requirements. Increased test coverage from 41% to 78% and resolved 15+ production incidents.\ncv_alice.txt",
+    "sources": [
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt"
+    ]
+  },
+  {
+    "timestamp": "2026-05-11T21:46:12.114907",
+    "user": "gap",
+    "response": "The provided context does not contain any information about \"gap\".\ncv_alice.txt",
+    "sources": [
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt",
+      "cv_alice.txt"
+    ]
+  }
+]

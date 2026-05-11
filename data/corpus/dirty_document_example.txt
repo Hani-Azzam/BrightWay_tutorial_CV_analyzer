@@ -1,0 +1,18 @@
+NCP -AAI  Ag ent  Arch itecture  0verview
+
+Ag ent  sys tems  are  comp0sed  0f  sev eral  c0re  c0mp0nents.  The  perc epti0n  lay er  rec eives  inp ut  fr0m  the  env ir0nment,  which  may  inc lude  text,  str uctured  data,  or  im ages.
+
+The  s tate  manag ement  c0mp0nent  tracks  what  the  ag ent  kn0ws  ab0ut  the  w0r1d  at  any  given  m0ment.  Th1s  1nc1udes  b0th  sh0rt-term  mem0ry  (the  c0nvers ati0n  hist0ry)  and  1 0ng-term  mem0ry  (persist ed  kn0w1edge).
+
+The  p01 icy  1ayer  decides  what  acti0n  t0  take  g1ven  the  current  state.  F0r  an  LLM-based  ag ent,  this  is  the  m0de1  itse1f.  The  m0de1  pr0duces  either  a  direct  resp0nse  0r  a  t001  ca11  based  0n  the  inp ut  and  the  c0ntext.
+
+T001  exec  uti0n  1ay er  —  the  ag  ent  can  ca11  ext erna1  t001s  such  as  calcul at0rs,  sear ch  engines,  0r  APIs.  The  t001  resu1t  is  then  inject ed  back  int0  the  prom pt  f0r  the  next  LLM  cal1.
+
+0bser vati0n  1 0 0p  —  after  executing  a  t001,  the  ag ent  0bserves  the  resu1t  and  decides  whether  t0  take  an0ther  acti0n  0r  pr0duce  a  fina1  answer.  Th1s  is  the  P1an-Act-0bserve  1 00p  descr ibed  in  the  ReAct  framew0rk.
+
+Tr ust  b0und  aries  defi  ne  which  c0mp0nents  are  tr usted  and  which  must  be  val idated.  LLM  0utput  is  never  trusted  direct1y  —  t001  arg uments  must  be  sanit ized  bef0re  exec uti0n.
+
+Note: This document was intentionally created with OCR-style noise to demonstrate
+dirty document pitfalls. Observe how this file scores lower in retrieval compared to
+clean documents on the same topic (ncp_aai_blueprint.txt). The character substitutions
+(0 for o, 1 for l) and irregular spacing corrupt the embedding, reducing retrieval quality.

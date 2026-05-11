@@ -1,0 +1,64 @@
+DATA CARD
+---------
+Source:        job_description.txt
+Last Updated:  2026-05-08
+PII Risk:      none
+Purpose:       Shared job description used in Phase 2 hiring agent evaluation
+
+------------------------------------------------------------------------
+
+JOB TITLE:   Senior AI Backend Engineer
+COMPANY:     Nexora AI
+LOCATION:    Tel Aviv, Israel (Hybrid — 3 days on-site)
+TYPE:        Full-time
+
+------------------------------------------------------------------------
+ABOUT THE ROLE
+------------------------------------------------------------------------
+Nexora AI is building the next generation of enterprise knowledge assistants.
+We are looking for a Senior AI Backend Engineer to design, build, and
+operate production-grade RAG pipelines and LLM-powered services. You will
+work closely with our ML researchers, product managers, and data engineers
+to ship features that reach thousands of enterprise users.
+
+------------------------------------------------------------------------
+REQUIRED QUALIFICATIONS
+------------------------------------------------------------------------
+1. At least 4 years of professional backend software engineering experience,
+   with Python as the primary language.
+
+2. Hands-on production experience with RAG systems — including chunking
+   strategies, embedding models, vector databases (Pinecone, Weaviate,
+   or equivalent), and retrieval evaluation.
+
+3. Solid understanding of LLM integration patterns: prompt engineering,
+   tool use, memory management, and responsible AI practices
+   (PII handling, audit logging, hallucination mitigation).
+
+4. Experience designing and maintaining REST APIs at scale using
+   frameworks such as FastAPI or Flask, with attention to latency,
+   reliability, and observability.
+
+5. Proficiency with cloud infrastructure (AWS or GCP), containerisation
+   (Docker), and CI/CD pipelines; comfortable owning services in production.
+
+------------------------------------------------------------------------
+NICE-TO-HAVE QUALIFICATIONS
+------------------------------------------------------------------------
+1. Experience with ML model fine-tuning (LoRA, PEFT) or working directly
+   with embedding model customisation.
+
+2. Open-source contributions or personal projects that demonstrate
+   initiative in the AI/LLM space.
+
+3. Familiarity with agentic frameworks such as LangChain, LangGraph,
+   or AutoGen, and experience building multi-step agent workflows.
+
+------------------------------------------------------------------------
+WHAT WE OFFER
+------------------------------------------------------------------------
+- Competitive salary: 35,000 – 50,000 NIS / month depending on experience
+- Equity package
+- Hybrid work model with a modern Tel Aviv office
+- Personal learning budget of 8,000 NIS / year
+- Direct impact on a product used by Fortune 500 companies

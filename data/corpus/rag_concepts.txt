@@ -1,0 +1,44 @@
+RAG Concepts — Retrieval-Augmented Generation
+
+WHAT IS RAG
+Retrieval-Augmented Generation (RAG) is a pattern where the LLM's response is grounded in documents retrieved from an external knowledge base rather than relying solely on the model's training data. The pipeline has four stages: ingest (chunk and embed documents), store (index vectors in a vector database), retrieve (find the most relevant chunks for a query), and generate (produce an answer conditioned on the retrieved context).
+
+RAG reduces hallucination by forcing the model to cite retrievable evidence. It also allows the knowledge base to be updated without retraining the model.
+
+CHUNKING
+Documents must be split into chunks before embedding because embedding models have a maximum token limit (typically 512–8192 tokens) and because smaller chunks produce more precise retrieval results.
+
+Chunk size tradeoffs:
+- Small chunks (100–300 characters): precise retrieval, but each chunk may lack enough context for the LLM to generate a good answer.
+- Large chunks (800–1500 characters): more context per chunk, but retrieval becomes less precise because the embedding represents a wider range of topics.
+- Medium chunks (400–600 characters): the common default. LangChain's RecursiveCharacterTextSplitter defaults to 1000 characters with 200 overlap.
+
+Chunk overlap: a configurable number of characters shared between adjacent chunks. Prevents answers from being cut off at a chunk boundary. Typical values: 10–20% of chunk_size.
+
+Separators: the splitter tries to break at paragraph boundaries first (\n\n), then line breaks (\n), then sentence boundaries (. ), then spaces, then characters. This preserves semantic units.
+
+EMBEDDINGS
+An embedding is a dense vector of floating-point numbers that represents the semantic meaning of a text. Texts with similar meanings produce similar vectors (high cosine similarity). Texts with unrelated meanings produce dissimilar vectors (low cosine similarity).
+
+Embedding models are trained specifically for this task and are separate from the LLM used for generation. Common models: Google text-embedding-004 (768 dimensions), OpenAI text-embedding-3-small (1536 dimensions), Cohere embed-v3 (1024 dimensions).
+
+Embedding dimension: higher dimension generally means more expressive representation but more storage and compute.
+
+RETRIEVAL METHODS
+
+Top-k similarity search: embed the query, compute cosine similarity against all stored chunk embeddings, return the k chunks with the highest similarity scores. Simple and fast. Risk: if several near-duplicate chunks exist, all k slots may be taken by the same content with slightly different wording.
+
+Maximal Marginal Relevance (MMR): retrieves a diverse set of results by iteratively selecting the next result that is most relevant to the query but least similar to already-selected results. Balances relevance and diversity. Controlled by a lambda parameter (0 = maximize diversity, 1 = maximize relevance).
+
+Reranking: a second-pass model (e.g. a cross-encoder) scores each retrieved chunk against the query more accurately than the embedding similarity. Computationally expensive but significantly improves precision. Used after top-k or MMR retrieval.
+
+Query rewriting: instead of sending the user's raw question to the retriever, the LLM is first used to rewrite the question into a form that matches the vocabulary used in the documents. Also called HyDE (Hypothetical Document Embedding) when the LLM generates a hypothetical answer to embed instead of the question.
+
+GROUNDING AND REFUSAL
+A well-designed RAG system should refuse to answer when the retrieved chunks are not relevant to the question. This prevents the LLM from fabricating an answer using training data when no matching document was found. The refusal threshold is typically based on the relevance score of the best-retrieved chunk. If the best score is below the threshold, the system returns a refusal message.
+
+METADATA
+Every indexed chunk should carry metadata describing its origin. Minimum metadata: source filename, chunk index. Additional metadata: section name, document date, license, PII risk, language. Metadata enables filtered retrieval (e.g. only search documents with license=public) and source citation in the generated answer.
+
+DIRTY DOCUMENTS
+OCR-processed documents often contain noise: incorrect character substitutions (0 for o, 1 for l), inconsistent spacing, mid-word line breaks, garbled section headers. Dirty chunks score poorly in retrieval because their embedding is distorted by the noise. Pre-processing steps — denoising, spell correction, whitespace normalization — should be applied before chunking and indexing.

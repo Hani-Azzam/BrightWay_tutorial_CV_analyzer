@@ -1,0 +1,94 @@
+DATA CARD
+---------
+Source:        cv_bob.txt
+Last Updated:  2026-05-08
+PII Risk:      high
+Purpose:       Fictional CV for assignment Phase 2 candidate evaluation
+
+------------------------------------------------------------------------
+
+BOB CHEN
+Software Engineer
+bob.chen@email.com | 054-987-6543 | LinkedIn: linkedin.com/in/bobchen-dev
+Jerusalem, Israel
+
+------------------------------------------------------------------------
+SUMMARY
+------------------------------------------------------------------------
+Full-stack engineer with 4 years of experience, specialising in React
+front-ends and Node.js APIs. Recently transitioned toward Python backend
+development and has completed two small LLM integration projects.
+Eager to deepen expertise in AI-powered products and data engineering.
+
+------------------------------------------------------------------------
+TECHNICAL SKILLS
+------------------------------------------------------------------------
+Languages:     JavaScript, TypeScript, Python, HTML, CSS
+Frameworks:    React, Next.js, Node.js (Express), FastAPI (beginner)
+Databases:     MySQL, Firebase, basic PostgreSQL
+ML / AI:       OpenAI API (GPT-4o), basic prompt engineering,
+               LangChain (self-taught, one project)
+Cloud:         Google Cloud Platform (Cloud Run, Firebase), Vercel, Docker
+Tools:         Git, GitHub, Jest, Cypress, Figma, Linear
+
+------------------------------------------------------------------------
+SOFT SKILLS
+------------------------------------------------------------------------
+- Fast self-learner with a track record of picking up new stacks quickly
+- Strong UI/UX empathy; advocates for the end-user in technical decisions
+- Good written communication; maintains detailed internal documentation
+- Works well in small agile teams with short feedback loops
+- Comfortable presenting demos and progress updates to stakeholders
+
+------------------------------------------------------------------------
+WORK EXPERIENCE
+------------------------------------------------------------------------
+Software Engineer — BrightLoop, Jerusalem
+Jun 2023 – Present
+- Built and maintained a React + Next.js customer dashboard used by
+  2,500 active users, reducing support tickets by 18%.
+- Developed a Node.js/Express REST API connecting the dashboard to
+  a MySQL data warehouse.
+- Integrated GPT-4o via OpenAI API to auto-generate weekly summary
+  reports, saving analysts ~3 hours per week.
+- Containerised the application with Docker and deployed on GCP Cloud Run.
+- Wrote Cypress end-to-end tests, achieving 85% critical-path coverage.
+
+Junior Frontend Developer — WebCraft Agency, Tel Aviv
+Sep 2021 – May 2023
+- Delivered 12 client websites using React and TypeScript within tight
+  deadlines and brand guidelines.
+- Collaborated closely with designers in Figma to translate mockups into
+  pixel-perfect, accessible components.
+- Introduced a shared component library that cut development time for
+  new client projects by 30%.
+- Began learning Python and completed two personal projects using
+  Flask and SQLite.
+
+------------------------------------------------------------------------
+EDUCATION
+------------------------------------------------------------------------
+B.Sc. Software Engineering — Hebrew University of Jerusalem
+Graduated: 2021 | GPA: 82 / 100
+
+------------------------------------------------------------------------
+CERTIFICATIONS
+------------------------------------------------------------------------
+- Google Associate Cloud Engineer (2024)
+- Udemy: LangChain & Vector Databases in Production (2025)
+
+------------------------------------------------------------------------
+PROJECTS
+------------------------------------------------------------------------
+ChatSummary (personal)
+  A LangChain-powered tool that indexes a Slack export and answers
+  questions about team decisions. Uses ChromaDB for local vector storage.
+
+QuickForm AI (personal)
+  A Next.js app that generates HTML forms from natural language
+  descriptions using the OpenAI API.
+
+------------------------------------------------------------------------
+LANGUAGES
+------------------------------------------------------------------------
+English — Fluent | Hebrew — Native | Mandarin — Conversational

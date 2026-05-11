@@ -1,0 +1,100 @@
+DATA CARD
+---------
+Source:        cv_alice.txt
+Last Updated:  2026-05-08
+PII Risk:      high
+Purpose:       Fictional CV for assignment Phase 1 and Phase 2 candidate evaluation
+
+------------------------------------------------------------------------
+
+ALICE MORGAN
+Software Engineer
+alice.morgan@email.com | 052-345-6789 | LinkedIn: linkedin.com/in/alicemorgan
+Tel Aviv, Israel
+
+------------------------------------------------------------------------
+SUMMARY
+------------------------------------------------------------------------
+Backend-focused software engineer with 6 years of experience building
+scalable Python services and data pipelines. Strong background in machine
+learning engineering, vector databases, and LLM-powered applications.
+Passionate about clean architecture and responsible AI practices.
+
+------------------------------------------------------------------------
+TECHNICAL SKILLS
+------------------------------------------------------------------------
+Languages:     Python, SQL, Bash, Go (basic)
+Frameworks:    FastAPI, LangChain, LangGraph, Flask, Celery
+Databases:     PostgreSQL, Redis, Pinecone, Weaviate, MongoDB
+ML / AI:       LLM integration, RAG pipelines, embedding models,
+               fine-tuning (LoRA), prompt engineering
+Cloud:         AWS (EC2, S3, Lambda, SageMaker), Docker, Kubernetes
+Tools:         Git, GitHub Actions, Terraform, Datadog, Weights & Biases
+
+------------------------------------------------------------------------
+SOFT SKILLS
+------------------------------------------------------------------------
+- Clear written and verbal communication across technical and non-technical audiences
+- Mentoring junior engineers through code review and pair programming
+- Comfortable driving projects from ambiguous requirements to delivery
+- Collaborative and proactive in cross-functional teams
+- Strong attention to detail and commitment to code quality
+
+------------------------------------------------------------------------
+WORK EXPERIENCE
+------------------------------------------------------------------------
+Senior Backend Engineer — DataSpark AI, Tel Aviv
+Jan 2023 – Present
+- Designed and shipped a production RAG pipeline serving 40,000 daily queries,
+  using LangChain, Pinecone, and Gemini embeddings.
+- Reduced average query latency by 38% by introducing MMR retrieval and
+  response caching with Redis.
+- Led migration from a monolithic Flask app to async FastAPI microservices,
+  cutting infrastructure cost by 22%.
+- Established PII redaction middleware applied to all user inputs before
+  LLM forwarding, satisfying GDPR audit requirements.
+- Mentored two junior engineers; conducted weekly architecture reviews.
+
+Backend Engineer — NovaTech Solutions, Tel Aviv
+Mar 2021 – Dec 2022
+- Built ETL pipelines processing 5 million records per day using
+  Python, Airflow, and PostgreSQL.
+- Integrated OpenAI and Cohere APIs into a customer-support chatbot,
+  improving resolution rate by 27%.
+- Authored internal developer guidelines for prompt engineering and
+  LLM cost management.
+- Maintained 99.95% uptime SLA across three production services.
+
+Junior Software Developer — CodeBase Ltd., Haifa
+Aug 2019 – Feb 2021
+- Developed REST APIs with Flask and PostgreSQL for an e-commerce platform.
+- Wrote unit and integration tests, raising coverage from 41% to 78%.
+- Participated in on-call rotation and resolved 15+ production incidents.
+
+------------------------------------------------------------------------
+EDUCATION
+------------------------------------------------------------------------
+B.Sc. Computer Science — Technion, Israel Institute of Technology
+Graduated: 2019 | GPA: 87 / 100
+
+------------------------------------------------------------------------
+CERTIFICATIONS
+------------------------------------------------------------------------
+- AWS Certified Solutions Architect – Associate (2023)
+- NVIDIA AI Associate — Generative AI Blueprint (2025)
+
+------------------------------------------------------------------------
+PROJECTS
+------------------------------------------------------------------------
+OpenAuditRAG (open source)
+  A lightweight, auditable RAG framework with built-in PII redaction,
+  audit logging, and contradiction detection. 420 GitHub stars.
+
+VecBench
+  Benchmarking suite comparing Pinecone, Weaviate, and ChromaDB on
+  recall@k and latency across synthetic and real-world corpora.
+
+------------------------------------------------------------------------
+LANGUAGES
+------------------------------------------------------------------------
+English — Fluent | Hebrew — Native | French — Basic
