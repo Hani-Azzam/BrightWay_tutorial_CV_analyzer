@@ -5,7 +5,12 @@ env/
 
 # Environment variables (keep secrets out of git)
 .env
-.env.*
+.env.local
+# .env.example is intentionally NOT ignored — it's safe to share
+
+# Generated at runtime
+data/audit_log.json
+data/phase1_review.txt
 
 # Python cache
 __pycache__/
